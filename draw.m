@@ -3,13 +3,13 @@ clear draw
 %% Run the model without the regulator in the equilibrium point
 BOUNDARY_CHOICE = "BOUNDED"; % BOUNDED or UNBOUNDED
 MODEL_CHOICE = "NONLINEAR"; % LINEARIZED or NONLINEAR
-set_param('model_nonlinear', 'SolverType', 'Fixed-step');
-set_param('model_nonlinear', 'Solver', 'ode4');
-set_param('model_nonlinear', 'FixedStep', '0.01');
-set_param('model_nonlinear', 'StartTime', '0'); % should be 0
-set_param('model_nonlinear', 'StopTime', '1.1');
-set_param('model_nonlinear', 'SimulationCommand', 'update');
-simOut = sim('model_nonlinear');
+set_param('model_robot', 'SolverType', 'Fixed-step');
+set_param('model_robot', 'Solver', 'ode4');
+set_param('model_robot', 'FixedStep', '0.01');
+set_param('model_robot', 'StartTime', '0'); % should be 0
+set_param('model_robot', 'StopTime', '1.1');
+set_param('model_robot', 'SimulationCommand', 'update');
+simOut = sim('model_robot');
 
 x1_sim = simOut.Scope.signals(1).values; % theta
 x2_sim = simOut.Scope.signals(2).values; % theta dot
