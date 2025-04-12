@@ -2,12 +2,12 @@ clear draw_robot
 clear draw
 %% Run the model without the regulator in the equilibrium point
 BOUNDARY_CHOICE = "BOUNDED"; % BOUNDED or UNBOUNDED
-MODEL_CHOICE = "NONLINEAR"; % LINEARIZED or NONLINEAR
+MODEL_CHOICE = "LINEARIZED"; % LINEARIZED or NONLINEAR
 set_param('model_robot', 'SolverType', 'Fixed-step');
 set_param('model_robot', 'Solver', 'ode4');
 set_param('model_robot', 'FixedStep', '0.01');
 set_param('model_robot', 'StartTime', '0'); % should be 0
-set_param('model_robot', 'StopTime', '1.1');
+set_param('model_robot', 'StopTime', '0.4');
 set_param('model_robot', 'SimulationCommand', 'update');
 simOut = sim('model_robot');
 
