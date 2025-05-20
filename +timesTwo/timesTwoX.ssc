@@ -1,0 +1,22 @@
+component timesTwoX
+    % timesTwoX
+    % hello i am under the wate
+    % another comment
+    % Description
+    % bal almd a w pkawdmaw awdm aw a
+    % Test 
+    % X D ADe
+
+
+    inputs 
+        x = 0; % INPUT
+    end
+    
+    outputs
+        y = 0; % OUTPTPT
+    end
+    
+    equations
+        y == 2*x; % EQUAAAAAATION
+    end
+end

@@ -1,0 +1,50 @@
+component customDamperA
+    % customDamperA
+    % hello i am under the water
+    %% We have three parameters:
+    % D
+    % w_lim
+    % t_max
+
+    nodes 
+        R = foundation.mechanical.rotational.rotational; % R:left
+        C = foundation.mechanical.rotational.rotational; % C:right
+    end
+
+    variables
+        t = { 0, 'N*m' };   % Torque
+        w = { 0, 'rad/s' }; % Ang vel
+    end
+
+    
+    parameters
+        D = { 0.01, '(N*m)*s/rad' }; % Damping coef
+        w_lim = { 10, 'rad/s' };    % Omega linear range
+        t_max = { 1, '(N*m)' };     % Max damping torque
+    end
+
+    function setup
+        if D <= 0 
+            error()
+        end
+    end
+
+    branches
+        t : R.t -> C.t;
+    end
+
+    equations
+        w == R.w - C.w;
+
+        if abs(w) <= w_lim
+            t == D*w;
+        else
+            let 
+                r = t_max / D - w_lim;
+            in 
+                t == t_max * w / (r + abs(w));
+            end
+        end
+    end
+
+end
